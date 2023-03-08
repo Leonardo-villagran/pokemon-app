@@ -3,6 +3,7 @@ import PokemonesComp from "../components/PokemonesComp";
 
 //Vista del dropdown para la selección de Pokemones.
 const Navigation = () => {
+  
   return (
     <Container className="pt-5">
       <PokemonesComp />

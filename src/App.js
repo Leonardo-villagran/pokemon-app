@@ -60,13 +60,14 @@ function App() {
   return (
     <div className="App">
       <Context.Provider value={ globalState }>
-      <BrowserRouter>
+      <BrowserRouter basename='/pokemon-app'>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Pokemones" element={<Pokemones />} />
           <Route path="*" element={<NotFound />} />
           <Route path="/Pokemon/:id" element={<Pokemon />} />
+          
         </Routes>
       </BrowserRouter>
       </Context.Provider>
