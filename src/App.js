@@ -56,11 +56,11 @@ function App() {
 
 
   const globalState = { nuevaLista, setNuevaLista };
-   //<BrowserRouter basename='/pokemones'>
+   //<BrowserRouter basename='/pokemon-app'>
   return (
     <div className="App">
       <Context.Provider value={ globalState }>
-      <BrowserRouter>
+      <BrowserRouter basename='/pokemon-app'>
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />

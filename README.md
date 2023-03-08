@@ -4,7 +4,7 @@
 
 ## Características:
 
-* EL sistema consiste en una web en la cual se debe seleccionar un Pokemon, para obtener un listado de datos asociados. 
+* El sistema consiste en una web, en la cual se debe seleccionar un Pokemon para obtener un listado de datos asociados. 
 
 ## Nota: 
 
