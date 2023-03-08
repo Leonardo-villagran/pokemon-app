@@ -1,0 +1,12 @@
+.peque{
+    width: 64.5%; 
+}
+.letra{
+    
+    font-weight: 500;
+    font-size:30px;
+    margin: 0px 0px 25px 0px;
+}
+a.active{
+    color:red !important;
+}
