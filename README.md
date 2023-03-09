@@ -1,4 +1,4 @@
-# pokemon-app
+# Pokemon-app
 
 >"Trabajo número 3 (Router II) de DesafioLatam para el módulo: React II (G27):"
 
