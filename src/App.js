@@ -4,7 +4,7 @@ import Navbar from "./components/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "./views/Home";
 import Pokemones from "./views/Pokemones";
-import Pokemon from "./views/Pokemon";
+//import Pokemon from "./views/Pokemon";
 import NotFound from "./views/NotFound";
 import Footer from "./views/Footer";
 
@@ -66,7 +66,7 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/Pokemones" element={<Pokemones />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/Pokemon/:id" element={<Pokemon />} />
+          <Route path="/Pokemones/:id" element={<Pokemones />} />
           
         </Routes>
       </BrowserRouter>

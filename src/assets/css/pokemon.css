@@ -2,11 +2,18 @@
     width: 64.5%; 
 }
 .letra{
-    
     font-weight: 500;
     font-size:30px;
     margin: 0px 0px 25px 0px;
 }
 a.active{
+    font-size:30px;
     color:red !important;
+}
+a{
+    font-size:30px;
+    color:white;
+}
+.letra_simple{
+    font-size:30px;
 }

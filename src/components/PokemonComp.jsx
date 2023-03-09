@@ -9,7 +9,6 @@ import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
 
 
-import "../assets/css/pokemon.css";
 
 function PokemonDetails() {
     const [pokemonData, setPokemonData] = useState([]);
@@ -19,13 +18,15 @@ function PokemonDetails() {
     const { nuevaLista } = useContext(Context);
 
     useEffect(() => {
-        async function fetchPokemonData() {
-            const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-            const data = await response.json();
-            setPokemonData(data['stats']);
+        if (id){
+            async function fetchPokemonData() {
+                const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+                const data = await response.json();
+                setPokemonData(data['stats']);
+            }
+            fetchPokemonData();
         }
-        fetchPokemonData();
-
+        
     }, [id]);
 
     useEffect(() => {
