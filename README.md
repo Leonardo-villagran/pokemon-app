@@ -28,4 +28,8 @@ http://localhost:3000/pokemon-app
 
 ## Imágenes de las distintas vistas:
 
-![](https://raw.githubusercontent.com/parzibyte/WaterPy/master/assets/ImagenV1.png)
+![https://github.com/Leonardo-villagran/pokemon-app/blob/main/src/assets/img/ejemplo01.jpg](https://github.com/Leonardo-villagran/pokemon-app/blob/main/src/assets/img/ejemplo01.jpg)
+
+![https://github.com/Leonardo-villagran/pokemon-app/blob/main/src/assets/img/ejemplo01.jpg](https://github.com/Leonardo-villagran/pokemon-app/blob/main/src/assets/img/ejemplo02.jpg)
+
+![https://github.com/Leonardo-villagran/pokemon-app/blob/main/src/assets/img/ejemplo01.jpg](https://github.com/Leonardo-villagran/pokemon-app/blob/main/src/assets/img/ejemplo03.jpg)
