@@ -15,10 +15,3 @@ code {
     monospace;
 }
 
-.card-transparent{
-  background-image: url("./assets/img/fondo2.jpg");
-  background-size:unset;
-}
-.imagen_pastel{
-  width: 30%;
-}

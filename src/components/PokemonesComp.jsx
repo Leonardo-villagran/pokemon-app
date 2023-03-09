@@ -3,12 +3,12 @@ import Context from "../Context/Context"
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
+import "../assets/css/pokemon.css";
+
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Card from 'react-bootstrap/Card';
-
-
 
 function PokemonList() {
   const { id } = useParams();
@@ -21,29 +21,29 @@ function PokemonList() {
 
   useEffect(() => {
     async function fetchPokemonData() {
-        if(id){
-          const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-          const data = await response.json();
-          setPokemonData(data['stats']);
-        }
+      if (id) {
+        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+        const data = await response.json();
+        setPokemonData(data['stats']);
       }
-      fetchPokemonData();
-}, [id]);
+    }
+    fetchPokemonData();
+  }, [id]);
 
-useEffect(() => {
+  useEffect(() => {
     const nueva = pokemonData.map((producto1, index) => ({
-        id: index,
-        stats: producto1.stat.name,
-        base: producto1.base_stat,
+      id: index,
+      stats: producto1.stat.name,
+      base: producto1.base_stat,
     }));
     setNuevaMatriz(nueva);
-}, [pokemonData, id]);
+  }, [pokemonData, id]);
 
   const handleViewDetails = (event) => {
     event.preventDefault();
     navigate(`/Pokemones/${selectedPokemon}`);
   }
-  
+
   const imprimirNombre = () => {
     const filteredUsers = nuevaLista.filter(lista => lista.name.toString() === id.toString());
     const arreglo =
@@ -91,9 +91,9 @@ useEffect(() => {
 
           <Row className="justify-content-center">
             <Col lg >
-              <Card className='h-100 card-transparent'>
-                <Card.Body className="text-center" >
-                  <Card.Text >
+              <Card className='h-100 card-transparent2'>
+                <Card.Body className="text-left" >
+                  <Card.Text className="text-left">
                     {imprimir_foto()}
                   </Card.Text>
 
@@ -101,7 +101,7 @@ useEffect(() => {
               </Card>
             </Col>
             <Col lg>
-              <Card className='h-100 card-transparent'>
+              <Card className='h-100 card-transparent4'>
                 <Card.Body >
                   <Card.Text>
                     {imprimir()}
@@ -119,17 +119,31 @@ useEffect(() => {
     return (
       <>
         <h1 className="p-3" >Seleccionar un Pokemón de la siguiente lista:</h1>
-        <div>
-          <select className="form-select form-select-lg mb-3 p-3" aria-label="form-select-lg example" value={selectedPokemon} onChange={(event) => setSelectedPokemon(event.target.value)} >
-            <option value="" defaultValue disabled>Listado de Pokemones</option>
-            {nuevaLista.map((pokemon, index) => (
-              <option key={index} value={pokemon.name}>{pokemon.name}</option>
-            ))}
-          </select>
-        </div>
-        <div>
-          <button className="btn btn-warning m-2 p-4 " onClick={handleViewDetails}><h3>Ver detalles</h3></button>
-        </div>
+        <Container className='container-fluid'>
+          <Row className="justify-content-center">
+            <Col lg >
+              <Card className='h-100 card-transparent4'>
+                <Card.Body className="text-center" >
+                  <Card.Text >
+                    <div>
+                      <select className="form-select form-select-lg mb-3 p-3" aria-label="form-select-lg example" value={selectedPokemon} onChange={(event) => setSelectedPokemon(event.target.value)} >
+                        <option value="" defaultValue disabled>Listado de Pokemones</option>
+                        {nuevaLista.map((pokemon, index) => (
+                          <option key={index} value={pokemon.name}>{pokemon.name}</option>
+                        ))}
+                      </select>
+                    </div>
+                    <div>
+                      <button className="btn btn-warning m-2 p-4 " onClick={handleViewDetails}><h3>Ver detalles</h3></button>
+                    </div>
+                  </Card.Text>
+
+                </Card.Body>
+              </Card>
+            </Col>
+          </Row>
+        </Container>
+
       </>
     )
   }
