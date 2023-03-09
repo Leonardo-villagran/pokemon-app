@@ -1,16 +1,18 @@
 {
   "files": {
-    "main.css": "/pokemon-app/static/css/main.01b8ed47.css",
-    "main.js": "/pokemon-app/static/js/main.5e3362cb.js",
+    "main.css": "/pokemon-app/static/css/main.8aeb2da4.css",
+    "main.js": "/pokemon-app/static/js/main.fe64d529.js",
     "static/media/fondo.jpg": "/pokemon-app/static/media/fondo.8cc877c9809c117cee4f.jpg",
     "static/media/fondo2.jpg": "/pokemon-app/static/media/fondo2.c91646067492e48a75d7.jpg",
+    "static/media/fondo_chico4.jpg": "/pokemon-app/static/media/fondo_chico4.f86db1090052abaa65a6.jpg",
     "static/media/mp.png": "/pokemon-app/static/media/mp.f6e9169a7db1476056af.png",
+    "static/media/fondo_chico3.jpg": "/pokemon-app/static/media/fondo_chico3.c20154abf5ff1aef7487.jpg",
     "index.html": "/pokemon-app/index.html",
-    "main.01b8ed47.css.map": "/pokemon-app/static/css/main.01b8ed47.css.map",
-    "main.5e3362cb.js.map": "/pokemon-app/static/js/main.5e3362cb.js.map"
+    "main.8aeb2da4.css.map": "/pokemon-app/static/css/main.8aeb2da4.css.map",
+    "main.fe64d529.js.map": "/pokemon-app/static/js/main.fe64d529.js.map"
   },
   "entrypoints": [
-    "static/css/main.01b8ed47.css",
-    "static/js/main.5e3362cb.js"
+    "static/css/main.8aeb2da4.css",
+    "static/js/main.fe64d529.js"
   ]
 }
