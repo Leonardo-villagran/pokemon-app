@@ -1,24 +1,28 @@
-// Importación del menú
+//Importación de funciones 
+
 import React, { useState, useEffect } from 'react';
-import Navbar from "./components/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import  Context  from "./Context/Context";
+
+//Importación de componentes y vistas.
+import Navbar from "./components/Navbar";
 import Home from "./views/Home";
 import Pokemones from "./views/Pokemones";
-//import Pokemon from "./views/Pokemon";
 import NotFound from "./views/NotFound";
 import Footer from "./views/Footer";
 
-import  Context  from "./Context/Context";
-
-
+//Importación de css para casos particulares dentro de los componentes.
 import "./assets/css/pokemon.css";
 
 function App() {
 
+  //Definición de estados.
   const [pokemonList, setPokemonList] = useState([]);
   const [nuevaLista, setNuevaLista] = useState([]);
 
+ 
   useEffect(() => {
+     //Cargar la lista de Pokemones desde la PokeAPI.
     async function fetchPokemonList() {
       try {
         const response = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=100&offset=0');
@@ -34,12 +38,14 @@ function App() {
   }, []);
 
   useEffect(() => {
+    //Función que genera la dirección de imagen para cada pokemon, según su id dentro de la PokeAPI. 
     const itemsWithCounter = pokemonList.map((item, index) => {
       return { ...item, 
         counter: index + 1,
         url: 'https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/' + (index+1) + '.png', };
     });
 
+    //Función que ordena la lista de Pokemones por nombre de forma ascendente.
     const sortedData = itemsWithCounter.sort((a, b) => {
       if (a.name < b.name) {
         return -1;
@@ -49,14 +55,12 @@ function App() {
       }
       return 0;
     });
-
-
     setNuevaLista(sortedData);
   }, [pokemonList]);
 
-
+  //Generación de la estados globales.
   const globalState = { nuevaLista, setNuevaLista };
-   //<BrowserRouter basename='/pokemon-app'>
+
   return (
     <div className="App">
       <Context.Provider value={ globalState }>

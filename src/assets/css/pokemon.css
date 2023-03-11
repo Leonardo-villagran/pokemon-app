@@ -1,5 +1,5 @@
 .peque{
-    width: 64.5%;
+    width: 70%;
     padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
 }
@@ -22,10 +22,6 @@ a{
     font-size:30px;
 }
 
-.card-transparent{
-    background-image: url("../img/fondo2.jpg");
-    background-size:unset;
-}
 .card-transparent2{
     background-image: url("../img/fondo_chico3.jpg");
     background-size:cover;
@@ -34,6 +30,10 @@ a{
     background-image: url("../img/fondo_chico4.jpg");
     background-size:cover;
 }
-.imagen_pastel{
+.card-transparent5{
+    background-image: url("../img/fondo_select5.png");
+    background-size:cover;
+}
+.imagen_home{
     width: 20%;
 }

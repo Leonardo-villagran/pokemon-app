@@ -8,7 +8,7 @@ const Home = () => {
       <h1 className="pt-5">
         Bienvenido <span className="fw-bold">Maestro Pokemon</span></h1>
       
-      <img className="imagen_pastel" src={image_pastel} alt={'foto'}/>
+      <img className="imagen_home" src={image_pastel} alt={'foto'}/>
       <h2 className="pt-5 font-weight-bold">El lugar de los Pokemones felices.</h2>
     </Container>
   );
