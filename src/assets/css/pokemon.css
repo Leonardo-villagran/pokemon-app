@@ -1,39 +1,57 @@
-.peque{
+.peque {
     width: 70%;
     padding: 0px 0px 0px 0px;
     margin: 0px 0px 0px 0px;
 }
-.letra{
+
+.letra {
     padding: 0px 0px 0px 40px;
     font-weight: 500;
     font-size: 25px;
     margin: 0px 0px 25px 0px;
     text-align: left;
 }
-a.active{
-    font-size:30px;
-    color:red !important;
-}
-a{
-    font-size:30px;
-    color:white;
-}
-.letra_simple{
-    font-size:30px;
+
+a.active {
+    font-size: 30px;
+    color: red !important;
 }
 
-.card-transparent2{
+.mi-clase {
+    font-size: 30px;
+    color: white !important;
+}
+
+.mi-clase.active {
+    font-size: 30px;
+    color: red !important;
+}
+
+
+a {
+    font-size: 30px;
+    color: white;
+}
+
+.letra_simple {
+    font-size: 30px;
+}
+
+.card-transparent2 {
     background-image: url("../img/fondo_chico3.jpg");
-    background-size:cover;
+    background-size: cover;
 }
-.card-transparent4{
+
+.card-transparent4 {
     background-image: url("../img/fondo_chico4.jpg");
-    background-size:cover;
+    background-size: cover;
 }
-.card-transparent5{
+
+.card-transparent5 {
     background-image: url("../img/fondo_select5.png");
-    background-size:cover;
+    background-size: cover;
 }
-.imagen_home{
+
+.imagen_home {
     width: 20%;
 }

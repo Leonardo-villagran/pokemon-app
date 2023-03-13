@@ -11,15 +11,15 @@ export default function Navigation() {
       <Navbar bg="secondary" variant="light">
         <Container className="justify-content-start">
           <Nav className="me-auto">
-          <NavLink to="/" activeclassname="active" className="text-white ms-3 text-decoration-none">
+          <NavLink to="/"  className="mi-clase ms-3 text-decoration-none">
               <RiMapPinLine />
             </NavLink>
           </Nav>
           <Nav className="justify-content">
-            <NavLink to="/" activeclassname="active" className="text-white ms-3 text-decoration-none">
+            <NavLink to="/" className="mi-clase ms-3 text-decoration-none">
               Home
             </NavLink>
-            <NavLink to="/Pokemones" activeclassname="active" className="text-white ms-3 text-decoration-none">
+            <NavLink to="/Pokemones"  className="mi-clase ms-3 text-decoration-none">
               Pokemones
             </NavLink>
           </Nav>
