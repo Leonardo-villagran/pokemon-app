@@ -14,6 +14,8 @@
 
 * Se generan las rutas para utilizar las distintas vistas a través de Browse Router (Home, Pokemones y Notfound).
 
+* Se utiliza una clase active que cambia los efectos sobre los links usando NavLink (rojo cuando está sobre la vista utilizada). 
+
 * Se traspasa la nueva lista al componente PokemonesComp en la cual se genera un select con 100 Pokemones, al seleccionar uno, se vuelve a cargar la página con un Id como parámetro, lo cual permite realizar una nueva consulta a la PokeAPI para obtener los valores de las estadísticas del Pokemón seleccionado y los datos que faltan se obtienen de la matriz original.
 
 * Cuando se selecciona un Pokemón a través de un select, se utiliza el parámetro id con el nombre del Pokemón (almacenado en un estado llamado selectedPokemon), para navegar a la ruta que imprime sus datos. Ejemplo: navigate(`/Pokemones/${selectedPokemon}`.
