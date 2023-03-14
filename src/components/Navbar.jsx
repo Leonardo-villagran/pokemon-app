@@ -6,20 +6,23 @@ import { RiMapPinLine } from "react-icons/ri";
 import "../assets/css/pokemon.css";
 
 export default function Navigation() {
+
+  const setActiveClass = ({ isActive }) => (isActive ? "active" : "mi-clase");
+
   return (
     <>
       <Navbar bg="secondary" variant="light">
         <Container className="justify-content-start">
           <Nav className="me-auto">
-          <NavLink to="/"  className="mi-clase ms-3 text-decoration-none">
+          <NavLink to="/"  className={setActiveClass}>
               <RiMapPinLine />
             </NavLink>
           </Nav>
           <Nav className="justify-content">
-            <NavLink to="/" className="mi-clase ms-3 text-decoration-none">
+            <NavLink  className={setActiveClass} to="/">
               Home
             </NavLink>
-            <NavLink to="/Pokemones"  className="mi-clase ms-3 text-decoration-none">
+            <NavLink  className={setActiveClass} to="/Pokemones" >
               Pokemones
             </NavLink>
           </Nav>

@@ -14,20 +14,26 @@ function PokemonList() {
 
   //Definición de estados
   const { id } = useParams();
-  const { nuevaLista } = useContext(Context);
+  const { nuevaLista,selectedPokemon, setSelectedPokemon } = useContext(Context);
 
-  const [selectedPokemon, setSelectedPokemon] = useState('');
   const [pokemonData, setPokemonData] = useState([]);
   const [nuevaMatriz, setNuevaMatriz] = useState([]);
   const navigate = useNavigate();
+  const [errores, setErrores] = useState(false);
 
   //Captura de datos de Pokemón seleccionado
   useEffect(() => {
     async function fetchPokemonData() {
       if (id) {
-        const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
-        const data = await response.json();
-        setPokemonData(data['stats']);
+        try {
+          const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+          const data = await response.json();
+          setPokemonData(data['stats']);
+        } catch (error) {
+          setErrores(true);
+          console.error(error);
+          
+        }
       }
     }
     fetchPokemonData();
@@ -60,7 +66,7 @@ function PokemonList() {
     return arreglo;
   }
 
-   //Función que permite imprimirna foto del Pokemón seleccionado a través de un filtro.
+  //Función que permite imprimirna foto del Pokemón seleccionado a través de un filtro.
   const imprimir_foto = () => {
 
     const filteredUsers = nuevaLista.filter(lista => lista.name.toString() === id.toString());
@@ -84,6 +90,7 @@ function PokemonList() {
 
     return arreglo;
   }
+  if (id) setSelectedPokemon(id);
   console.log('Lista Pokemona: ', nuevaLista);
   console.log('Estadísticas pokemonas: ', pokemonData);
   console.log('Pokemon seleccionado: ', selectedPokemon);
@@ -91,37 +98,42 @@ function PokemonList() {
 
   //Función que permite imprimir en pantalla todos los datos del Pokemón seleccionado a través de cards de Bootstrap.
   const imprimirProcesado = () => {
-    return (
-      <>
-        <Container className='container-fluid'>
-          <Row >
-            <Col >{imprimirNombre()}</Col>
-          </Row>
+    if (errores === true) {
+      return (<h1>No existe <span className='errores'>{id}</span> en la base de datos.</h1>);
+    }
+    else {
+      return (
+        <>
+          <Container className='container-fluid'>
+            <Row >
+              <Col >{imprimirNombre()}</Col>
+            </Row>
 
-          <Row className="justify-content-center">
-            <Col lg >
-              <Card className='h-100 card-transparent2 border border-danger rounded border-3'>
-                <Card.Body className="text-left" >
-                  <Card.Text className="text-left">
-                    {imprimir_foto()}
-                  </Card.Text>
+            <Row className="justify-content-center">
+              <Col lg >
+                <Card className='h-100 card-transparent2 border border-danger rounded border-3'>
+                  <Card.Body className="text-left" >
+                    <Card.Text className="text-left">
+                      {imprimir_foto()}
+                    </Card.Text>
 
-                </Card.Body>
-              </Card>
-            </Col>
-            <Col lg>
-              <Card className='h-100 card-transparent4 border border-danger rounded border-3'>
-                <Card.Body >
-                  <Card.Text>
-                    {imprimir()}
-                  </Card.Text>
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-        </Container>
-      </>
-    )
+                  </Card.Body>
+                </Card>
+              </Col>
+              <Col lg>
+                <Card className='h-100 card-transparent4 border border-danger rounded border-3'>
+                  <Card.Body >
+                    <Card.Text>
+                      {imprimir()}
+                    </Card.Text>
+                  </Card.Body>
+                </Card>
+              </Col>
+            </Row>
+          </Container>
+        </>
+      )
+    }
   }
   //Función que permite imprimir el selector para elegir un Pokemón de la lista obtenida desde la PokeAPI. 
   const imprimirSelect = () => {
@@ -133,17 +145,17 @@ function PokemonList() {
             <Col lg >
               <Card className='h-100 card-transparent5'>
                 <Card.Body className="text-center" >
-                    <div>
-                      <select className="form-select form-select-lg mb-3 p-3" aria-label="form-select-lg example" value={selectedPokemon} onChange={(event) => setSelectedPokemon(event.target.value)} >
-                        <option value="" defaultValue disabled>Listado de Pokemones</option>
-                        {nuevaLista.map((pokemon, index) => (
-                          <option key={index} value={pokemon.name}>{pokemon.name}</option>
-                        ))}
-                      </select>
-                    </div>
-                    <div>
-                      <button className="btn btn-warning m-2 p-4 " onClick={handleViewDetails}><h3>Ver detalles</h3></button>
-                    </div>
+                  <div>
+                    <select className="form-select form-select-lg mb-3 p-3" aria-label="form-select-lg example" value={selectedPokemon} onChange={(event) => setSelectedPokemon(event.target.value)} >
+                      <option value="" defaultValue disabled>Listado de Pokemones</option>
+                      {nuevaLista.map((pokemon, index) => (
+                        <option key={index} value={pokemon.name}>{pokemon.name}</option>
+                      ))}
+                    </select>
+                  </div>
+                  <div>
+                    <button className="btn btn-warning m-2 p-4 " onClick={handleViewDetails}><h3>Ver detalles</h3></button>
+                  </div>
                 </Card.Body>
               </Card>
             </Col>

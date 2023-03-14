@@ -19,6 +19,7 @@ function App() {
   //Definición de estados.
   const [pokemonList, setPokemonList] = useState([]);
   const [nuevaLista, setNuevaLista] = useState([]);
+  const [selectedPokemon, setSelectedPokemon] = useState('');
 
  
   useEffect(() => {
@@ -59,7 +60,7 @@ function App() {
   }, [pokemonList]);
 
   //Generación de la estados globales.
-  const globalState = { nuevaLista, setNuevaLista };
+  const globalState = { nuevaLista, setNuevaLista, selectedPokemon, setSelectedPokemon};
 
   return (
     <div className="App">
@@ -68,10 +69,11 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/Pokemones" element={<Pokemones />} />
           <Route path="*" element={<NotFound />} />
-          <Route path="/Pokemones/:id" element={<Pokemones />} />
-          
+          {selectedPokemon}? 
+            <Route path="/Pokemones/:id" element={<Pokemones />} />
+            :
+            <Route path="/Pokemones/" element={<Pokemones />} />
         </Routes>
       </BrowserRouter>
       </Context.Provider>
