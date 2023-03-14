@@ -19,9 +19,8 @@ function App() {
   //Definición de estados.
   const [pokemonList, setPokemonList] = useState([]);
   const [nuevaLista, setNuevaLista] = useState([]);
-  const [selectedPokemon, setSelectedPokemon] = useState('');
+  
 
- 
   useEffect(() => {
      //Cargar la lista de Pokemones desde la PokeAPI.
     async function fetchPokemonList() {
@@ -60,7 +59,15 @@ function App() {
   }, [pokemonList]);
 
   //Generación de la estados globales.
-  const globalState = { nuevaLista, setNuevaLista, selectedPokemon, setSelectedPokemon};
+  const globalState = { nuevaLista, setNuevaLista};
+
+
+  /**
+    {selectedPokemon}? 
+            <Route path="/Pokemones/:id" element={<Pokemones />} />
+            :
+            <Route path="/Pokemones/" element={<Pokemones />} />
+   */
 
   return (
     <div className="App">
@@ -70,10 +77,8 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="*" element={<NotFound />} />
-          {selectedPokemon}? 
-            <Route path="/Pokemones/:id" element={<Pokemones />} />
-            :
-            <Route path="/Pokemones/" element={<Pokemones />} />
+          <Route path="/Pokemones/:id" element={<Pokemones />} />
+          <Route path="/Pokemones" element={<Pokemones />} />
         </Routes>
       </BrowserRouter>
       </Context.Provider>

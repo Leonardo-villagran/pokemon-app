@@ -14,14 +14,16 @@ function PokemonList() {
 
   //Definición de estados
   const { id } = useParams();
-  const { nuevaLista,selectedPokemon, setSelectedPokemon } = useContext(Context);
+  const { nuevaLista} = useContext(Context);
 
+  const [selectedPokemon, setSelectedPokemon] = useState('');
   const [pokemonData, setPokemonData] = useState([]);
   const [nuevaMatriz, setNuevaMatriz] = useState([]);
-  const navigate = useNavigate();
   const [errores, setErrores] = useState(false);
+  const navigate = useNavigate();
 
-  //Captura de datos de Pokemón seleccionado
+  //Captura de datos de Pokemón seleccionado.
+  //En el caso que se busque un pokemón que no existe en la lista, se marca el estado errores como verdadero y se imprime un mensaje que informa que no existe. 
   useEffect(() => {
     async function fetchPokemonData() {
       if (id) {
@@ -32,7 +34,7 @@ function PokemonList() {
         } catch (error) {
           setErrores(true);
           console.error(error);
-          
+
         }
       }
     }
@@ -49,6 +51,7 @@ function PokemonList() {
     setNuevaMatriz(nueva);
   }, [pokemonData, id]);
 
+  //Redirigir al usuario a a través del hook useNavigate 
   const handleViewDetails = (event) => {
     event.preventDefault();
     navigate(`/Pokemones/${selectedPokemon}`);
@@ -68,8 +71,24 @@ function PokemonList() {
 
   //Función que permite imprimirna foto del Pokemón seleccionado a través de un filtro.
   const imprimir_foto = () => {
+    
+    let filteredUsers;
+    let variable;
 
-    const filteredUsers = nuevaLista.filter(lista => lista.name.toString() === id.toString());
+    //Condicional que se usa en caso de que se ingrese un número como Pokemón y no su nombre
+    if (!isNaN(id)) { // Comprobamos si la variable es un número
+      variable = Number(id); // Convertimos la variable a un número
+    } else {
+      variable = String(id); // Convertimos la variable a una cadena de texto
+    }
+    
+    if (Number.isInteger(variable)) {
+      filteredUsers = nuevaLista.filter(lista => lista.counter.toString() === id.toString());
+    }
+    else {
+      filteredUsers = nuevaLista.filter(lista => lista.name.toString() === id.toString());
+    }
+    console.log(typeof variable);
     console.log("Filtrado: ", filteredUsers);
 
     const arreglo =
@@ -82,7 +101,7 @@ function PokemonList() {
   }
 
   //Función que permite imprimir el listado de estadísticas. 
-  const imprimir = () => {
+  const imprimirEstadisticas = () => {
     const arreglo =
       nuevaMatriz.map((productox, index) => (
         <li className='letra' key={index}>{productox.stats}{':'} {productox.base}</li>
@@ -90,7 +109,14 @@ function PokemonList() {
 
     return arreglo;
   }
-  if (id) setSelectedPokemon(id);
+
+  //seteo de Pokemón seleccionado en caso de recargar la página y se pierda el id 
+
+    //seteo de Pokemón seleccionado en caso de recargar la página y se pierda el id 
+  useEffect(() => {
+    if (id) setSelectedPokemon(id);
+  }, [id]);
+
   console.log('Lista Pokemona: ', nuevaLista);
   console.log('Estadísticas pokemonas: ', pokemonData);
   console.log('Pokemon seleccionado: ', selectedPokemon);
@@ -124,7 +150,7 @@ function PokemonList() {
                 <Card className='h-100 card-transparent4 border border-danger rounded border-3'>
                   <Card.Body >
                     <Card.Text>
-                      {imprimir()}
+                      {imprimirEstadisticas()}
                     </Card.Text>
                   </Card.Body>
                 </Card>
