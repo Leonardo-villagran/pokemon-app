@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 
 import "../assets/css/pokemon.css";
-
+import Button from "react-bootstrap/Button";
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -122,6 +122,10 @@ function PokemonList() {
   console.log('Pokemon seleccionado: ', selectedPokemon);
   console.log('id: ', id);
 
+  const regresar = (event) => {
+    event.preventDefault();
+    navigate(`/Pokemones`);
+  }
   //Función que permite imprimir en pantalla todos los datos del Pokemón seleccionado a través de cards de Bootstrap.
   const imprimirProcesado = () => {
     if (errores === true) {
@@ -157,6 +161,9 @@ function PokemonList() {
               </Col>
             </Row>
           </Container>
+          <div>
+        <Button variant='primary' className='my-2 btn btn-warning m-1 p-2' onClick={regresar}><h3>Regresar</h3></Button>
+      </div>
         </>
       )
     }
@@ -180,14 +187,13 @@ function PokemonList() {
                     </select>
                   </div>
                   <div>
-                    <button className="btn btn-warning m-2 p-4 " onClick={handleViewDetails}><h3>Ver detalles</h3></button>
+                    <button className="btn btn-warning m-2 p-3 " onClick={handleViewDetails}><h3>Ver detalles</h3></button>
                   </div>
                 </Card.Body>
               </Card>
             </Col>
           </Row>
         </Container>
-
       </>
     )
   }
@@ -197,6 +203,7 @@ function PokemonList() {
   return (
     <div className="d-block text-center">
       {(id) ? imprimirProcesado() : imprimirSelect()}
+      
     </div>
   );
 }

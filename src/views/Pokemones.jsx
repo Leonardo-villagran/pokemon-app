@@ -6,7 +6,7 @@ import PokemonesComp from "../components/PokemonesComp";
 const Navigation = () => {
   
   return (
-    <Container className="pt-5">
+    <Container>
       <PokemonesComp />
     </Container>
   );

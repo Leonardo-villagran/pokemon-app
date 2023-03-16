@@ -52,5 +52,5 @@ a {
 }
 
 .imagen_home {
-    width: 20%;
+    min-width: 30%;
 }
